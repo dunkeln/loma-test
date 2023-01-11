@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'PT Mono';
+    src: url('./PTMono-Regular.ttf');
+}
+
+body {
+    color: white;
+    background-color: #292c32;
+}
