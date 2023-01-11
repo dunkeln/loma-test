@@ -12,9 +12,8 @@ Still in works on adding new features namely
 
 ### PREVIEW
 
-<video width="320" height="240" controls>
-  <source src="./media/preview.mp4" type="video/mp4">
-</video>
+
+https://user-images.githubusercontent.com/46231179/211931514-924efcbf-68f7-45f5-ae65-ee6f6e68fe68.mp4
 
 ### TODOs
 
