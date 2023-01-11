@@ -12,7 +12,9 @@ Still in works on adding new features namely
 
 ### PREVIEW
 
-![preview](./media/preview.mov)
+<video width="320" height="240" controls>
+  <source src="./media/preview.mov" type="video/mp4">
+</video>
 
 ### TODOs
 
