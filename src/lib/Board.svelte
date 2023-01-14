@@ -1,5 +1,6 @@
 <script lang="ts">
     import makeBoard, { generateArr, shuffle } from '../utils/utils';
+    import Table from './Table.svelte';
     export let size: number;
     export let color = true;
     export let numbers: boolean;
@@ -60,39 +61,40 @@
 
 </script>
 
-<table>
-{#each matrix as row}
-    <tr>
-    {#each row as data}
-        <td 
-            style:background-color={schulteColor()}
-            on:keydown={()=>{}}
-            on:click={() => start && checkStack(data)}>
-            {data}
-        </td>
+<div id="board">
+
+    <div class="board">
+    <table>
+    {#each matrix as row}
+        <tr>
+        {#each row as data}
+            <td 
+                style:background-color={schulteColor()}
+                on:keydown={()=>{}}
+                on:click={() => start && checkStack(data)}>
+                {data}
+            </td>
+        {/each}
+        </tr>
     {/each}
-    </tr>
-{/each}
-<th colspan={size}>
-    {#if stack.length !== 0}
-    find <span> 
-            { stack[stack.length - 1] }
-        </span>
-    {:else}
-        completed 🏆
+    <th colspan={size}>
+        {#if stack.length !== 0}
+        find <span> 
+                { stack[stack.length - 1] }
+            </span>
+        {:else}
+            completed 🏆
+        {/if}
+    </th>
+    </table>
+    </div>
+
+    <div class="board">
+    {#if record.length !== 0}
+        <Table record={record}/>
     {/if}
-</th>
-</table>
-
-{#if record.length !== 0}
-    {#each record as x}
-        size: {x.size}<br/>
-        time: {x.time}s<br/>
-        mistakes: {x.mistakes}<br/>
-    {/each}
-{/if}
-
-<br/>
+    </div>
+</div>
 
 <style>
     td {
@@ -129,5 +131,10 @@
         color: black;
         padding-top: 0.6rem;
         padding-bottom: 0.6rem;
+    }
+
+    #board {
+        display: flex;
+        flex-direction: column;
     }
 </style>

@@ -13,7 +13,6 @@ let numbers = true;
 let start;
 startStore.subscribe(x => start = x);
 
-
 let options = Array.from({ length: 7 }, (_, i) => i + 4);
 </script>
 
@@ -30,43 +29,45 @@ let options = Array.from({ length: 7 }, (_, i) => i + 4);
             {#each ["b&w", "colored"] as opt}
                 {#if opt === "colored"}
                 <button 
-                    on:click={() => {
-                            console.info(color);
-                            color = true;
-                        }}
-                    >
+                class:btn-selected={color}
+                on:click={() => color = true}>
                     {opt}
                 </button>
                 {:else}
                 <button 
-                    on:click={() => {
-                            console.info(color);
-                            color = false;
-                        }}
-                    >
+                class:btn-selected={!color}
+                on:click={() => color = false }>
                     {opt}
                 </button>
                 {/if}
             {/each}
         </span>
-
+            <span class="chr">∙</span>
         <span class="opts">
             {#each ["numbers", "letters"] as opt}
                 {#if opt === "numbers"}
-                <button on:click={() => numbers = true}>
+                <button 
+                class:btn-selected={numbers}
+                on:click={() => numbers = true}>
                     {opt}
                 </button>
                 {:else}
-                <button on:click={() => numbers = false}>
+                <button 
+                class:btn-selected={!numbers}
+                on:click={() => numbers = false}>
                     {opt}
                 </button>
                 {/if}
             {/each}
         </span>
-
+            <span class="chr">∙</span>
         <span class="opts">
             {#each options as opt}
-                <button on:click={() => size = opt}>{opt}x{opt}</button>
+                <button 
+                    class:btn-selected={size == opt}
+                    on:click={() => size = opt}>
+                    {opt}x{opt}
+                </button>
             {/each}
         </span>
 
@@ -122,16 +123,26 @@ let options = Array.from({ length: 7 }, (_, i) => i + 4);
     }
 
     .opts {
-        background: #343a46cc;
-        padding: .4rem;
-        border-radius: .3rem;
+        padding: 0;
+        margin-top: .4rem;
+        margin-bottom: .4rem;
     }
 
     .opts > button {
+        color: #ebecf0;
         margin-left: .4rem;
         margin-right: .4rem;
         border-radius: 0;
         box-shadow: none;
+        border-radius: .4rem;
+        padding-left: .5rem;
+        padding-right: .5rem;
+        font-family: ui-monospace;
+        user-select: none;
+    }
+
+    .opts > button:active {
+        background-color: #646276;
     }
 
     #selections {
@@ -140,8 +151,8 @@ let options = Array.from({ length: 7 }, (_, i) => i + 4);
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        box-shadow: 0px 1px 7px 0px #1a1a1db8;
     }
+
     main {
         display: flex;
         flex-direction: column;
@@ -152,5 +163,14 @@ let options = Array.from({ length: 7 }, (_, i) => i + 4);
     #game-button {
         padding: 0.8rem 1.2952rem;
         font-family: bolder;
+    }
+
+    .btn-selected {
+        background: #646276;
+        color: #302b3f;
+    }
+
+    .chr {
+        color: #343a46cc;
     }
 </style>
