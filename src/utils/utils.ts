@@ -9,12 +9,12 @@ export const generateArr =
 
 export const shuffle = (arr: (String | Number)[]) => arr.sort(() => Math.random() - .5);
 
+export const formatTimer = (number: number) => 
+    number > 9 ? String(number) : '0' + number;
+
 const makeBoard = (arr: (String|Number)[] , size: number) =>
     Array.from({ length: size }, (_, i) => 
         arr.slice(i * size, size + (i * size))
     );
 
 export default makeBoard;
-
-export const formatTimer = (number) => 
-    number > 9 ? String(number) : "0"+number;

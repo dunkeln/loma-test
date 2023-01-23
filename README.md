@@ -19,4 +19,4 @@ https://user-images.githubusercontent.com/46231179/211931514-924efcbf-68f7-45f5-
 
 - [ ] refactor
 - [ ] add better control flow
-- [ ] resolve issue with reshuffling board after every game
+- [X] resolve issue with reshuffling board after every game

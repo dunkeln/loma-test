@@ -51,8 +51,11 @@
                     mistakes: mistakes,
                 });
             record = record;
+            
             time.set(0);
             startStore.set(false);
+            matrix = makeBoard(shuffle(generateArr(size, !numbers)), size);
+            stack = generateArr(size, !numbers).reverse();
             console.info(record);
             start = false;
         }
